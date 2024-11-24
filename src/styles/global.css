@@ -1,0 +1,34 @@
+/* グローバルCSSまたはモジュールCSSファイル */
+nav {
+    background-color: #f8f9fa; /* 明るい背景色 */
+    padding: 1rem 2rem; /* 適度な内側の余白 */
+    display: flex;
+    justify-content: center; /* 水平方向に中央寄せ */
+    gap: 1rem; /* 各リンク間の間隔 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 少し浮いている感じの影 */
+  }
+  
+  nav a {
+    text-decoration: none; /* 下線を削除 */
+    color: #0070f3; /* リンクの青色 */
+    font-size: 1rem; /* 適度な文字サイズ */
+    font-weight: 600; /* 少し太めのフォント */
+    transition: color 0.3s ease, transform 0.2s ease; /* ホバーアニメーション */
+  }
+  
+  nav a:hover {
+    color: #0056b3; /* ホバー時の色を濃くする */
+    transform: scale(1.05); /* ホバー時に少し拡大 */
+  }
+  
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column; /* 狭い画面では縦並び */
+      align-items: center; /* 中央寄せ */
+    }
+  
+    nav a {
+      font-size: 1.2rem; /* 小さい画面で文字を少し大きく */
+    }
+  }
+  
