@@ -1,13 +1,19 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React from 'react';
-import p5Types from 'p5';
+import React, { useEffect } from 'react';
 
-export default function Home() {
+const EuclidPattern = dynamic(() => import('./DrawEuclidPattern'), {
+  ssr: false,
+});
+
+const DrawEuclidPatternPage = () => {
   return (
     <div>
-      <h1>This Page Show Euclid Pattern!</h1>
+      <h1> ユークリッドパターン</h1> 
+      <EuclidPattern />
     </div>
   );
-}
+};
+
+export default DrawEuclidPatternPage;
