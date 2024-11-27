@@ -10,21 +10,18 @@ const setup = (p: p5) => {
   const WIDTH: number = p.width;
   const horizontal:number = 13;
   const vertical:number = 5;
-  const thr:number = 3;
+  const thr:number = 50;
   // ratioは横/縦, ration > 1は横長, ratio < 1は縦長
   const ratio =  horizontal/vertical;
 
   let rem = WIDTH;
-  let ittr = 0;
   let xPos = 0;
   let yPos = 0;
 
   p.colorMode(p.HSB, 1);
-  // p.noStroke();
 
   divideSquare(p, rem, ratio, xPos, yPos);
-  // ans_divideRectangle(p, rem, ratio, xPos, yPos);
-  // divideRectangle(p);
+  // divideRectangle(p, rem, ratio, xPos, yPos);
 };
 
 export default setup;

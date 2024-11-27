@@ -28,12 +28,6 @@ const EuclidPattern = () => {
 
   return (
     <div>
-      <div className='container'>
-
-        <input />
-        <div></div>
-        <input/>
-      </div>
       <div id='p5-container'></div>
     </div>
   );
