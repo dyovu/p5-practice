@@ -20,7 +20,7 @@ export const recurDivideSquare = (p: p5, thr:number, wd:number, ratio:number, xP
   }else{
     ittr = 1;
   }
-  p.fill(p.color(p.random(1), p.random(1), p.random(1)));
+  p.fill(p.color(p.random(1), 0.5, 1));
   p.rect(xPos, yPos, rem, rem);
 
   while (rem > thr) {
@@ -66,14 +66,14 @@ export const recurDivideRectangle = (p: p5, thr:number, wd:number, ratio:number,
     yEndPos = wd + yPos;
     rem = wd*ratio;
     ittr = 0;
-    p.fill(p.color(p.random(1), p.random(1), p.random(1)));
+    p.fill(p.color(p.random(1), 0.5, 1));
     p.rect(xPos, yPos, wd*ratio, wd);
   }else{
     xEndPos = wd + xPos;
     yEndPos = wd/ratio + yPos;
     rem = wd/ratio;
     ittr = 1;
-    p.fill(p.color(p.random(1), p.random(1), p.random(1)));
+    p.fill(p.color(p.random(1), 0.5, 1));
     p.rect(xPos, yPos, wd, wd/ratio);
   }
 

@@ -10,7 +10,7 @@ const setup = (p: p5) => {
   const WIDTH: number = p.width;
   const horizontal:number = 10;
   const vertical:number = 6;
-  const thr:number = 160;
+  const thr:number = 40;
   // ratioは横/縦, ration > 1は横長, ratio < 1は縦長
   const ratio =  horizontal/vertical;
 
