@@ -3,7 +3,6 @@ import p5 from 'p5';
 // 長方形による正方形の分割
 // 引数には正方形の一片の長さ、縦横比、左上のx座標、左上のy座標を持つ
 export const divideSquare = (p: p5, wd:number, ratio:number, xPos:number, yPos:number) => {
-  const WIDTH: number = p.width;
   let ittr = 0;
   let xEndPos = wd + xPos;
   let yEndPos = wd + yPos;
