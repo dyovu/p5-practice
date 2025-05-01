@@ -8,9 +8,9 @@ const setup = (p: p5) => {
   p.frameRate(1);
 
   const WIDTH: number = p.width;
-  const horizontal:number = 10;
-  const vertical:number = 6;
-  const thr:number = 40;
+  const horizontal:number = 9;
+  const vertical:number = 10;
+  const thr:number = 10;
   // ratioは横/縦, ration > 1は横長, ratio < 1は縦長
   const ratio =  horizontal/vertical;
 
@@ -19,9 +19,11 @@ const setup = (p: p5) => {
   let yPos = 0;
 
   p.colorMode(p.HSB, 1);
+  p.noStroke();
 
   // divSquareのremには長方形の横, horizontalを引数に渡す
-  // divideSquare(p, rem, ratio, xPos, yPos);
+  // divideSquare(p, wd, ratio, xPos, yPos);
+  // divideRectangle(p, wd, ratio, xPos, yPos);
   recurDivideSquare(p, thr, wd, ratio, xPos, yPos);
 
 }

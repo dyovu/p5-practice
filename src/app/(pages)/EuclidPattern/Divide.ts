@@ -25,19 +25,19 @@ export const divideSquare = (p: p5, wd:number, ratio:number, xPos:number, yPos:n
     ittr++;
     if(ittr % 2 == 1) {
       while (xPos + rem*ratio < xEndPos+0.1) {
-        // p.fill(p.color(p.random(1), 1, 1));
-        // p.rect(xPos, yPos, rem*ratio, rem);
-        ratio > 1 ? divideRectangle(p, rem*ratio, ratio, xPos, yPos) : divideRectangle(p, rem, ratio, xPos, yPos);
-        console.log("y", rem, ratio, xPos, yPos);
+        p.fill(p.color(p.random(1), 1, 1));
+        p.rect(xPos, yPos, rem*ratio, rem);
+        // ratio > 1 ? divideRectangle(p, rem*ratio, ratio, xPos, yPos) : divideRectangle(p, rem, ratio, xPos, yPos);
+        // console.log("y", rem, ratio, xPos, yPos);
         xPos += rem*ratio;
       }
       rem = xEndPos - xPos;
     } else {
       while (yPos + rem/ratio < yEndPos+0.1) {
-        // p.fill(p.color(p.random(1), 1, 1));
-        // p.rect(xPos, yPos, rem, rem/ratio);
-        ratio > 1 ? divideRectangle(p, rem, ratio, xPos, yPos) : divideRectangle(p, rem/ratio, ratio, xPos, yPos);
-        console.log("y", rem, ratio, xPos, yPos);
+        p.fill(p.color(p.random(1), 1, 1));
+        p.rect(xPos, yPos, rem, rem/ratio);
+        // ratio > 1 ? divideRectangle(p, rem, ratio, xPos, yPos) : divideRectangle(p, rem/ratio, ratio, xPos, yPos);
+        // console.log("y", rem, ratio, xPos, yPos);
         yPos += rem/ratio;
       }
       rem = yEndPos - yPos;

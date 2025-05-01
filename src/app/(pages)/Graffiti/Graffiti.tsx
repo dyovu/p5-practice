@@ -8,9 +8,10 @@ import '@/styles/global.css';
 import setup from './Setup';
 import draw from './Draw';
 
-const EuclidPattern = () => {
+const Graffiti = () => {
   const { height, width } = useWindowSize();
   useEffect(() => {
+    
     const sketch = (p: p5) => {
       p.setup = () => setup(p);
       p.draw = () => draw(p);
@@ -33,4 +34,4 @@ const EuclidPattern = () => {
   );
 };
 
-export default EuclidPattern;
+export default Graffiti;

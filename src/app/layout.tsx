@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import '@/styles/global.css';
+import '@/styles/layout.css';
 
 export default function RootLayout({
   children,
@@ -12,8 +12,12 @@ export default function RootLayout({
       <body>
         <nav>
           <Link href={'/'}>ホーム</Link>
-          <Link href={'/EuclidPattern'}>Euclid Pattern</Link>
-          <Link href={'/ContinuedFraction'}>Continued Fraction</Link>
+          <Link href={'/EuclidPattern'}>ユークリッドパターン</Link>
+          <Link href={'/LogarithmicSpiral'}>対数螺旋</Link>
+          <Link href={'/PixelPainter'}>ピクセルぺいんと</Link>
+          <Link href={'/Graffiti'}>Graffiti</Link>
+          <Link href={'/RecursionPolygon'}>RecursionPolygon</Link>
+          <Link href={'/Test'}>テスト</Link>
         </nav>
         {children}
       </body>

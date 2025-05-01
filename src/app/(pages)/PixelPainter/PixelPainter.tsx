@@ -3,14 +3,19 @@
 import React, { useEffect } from 'react';
 import p5 from 'p5';
 
-import setup from './SetUp';
+import '@/styles/global.css';
+import setup from './Setup';
 import draw from './Draw';
 
-const EuclidPattern = () => {
+const PixelPainter = () => {
   useEffect(() => {
+    
     const sketch = (p: p5) => {
-      p.setup = () => setup(p);
-      p.draw = () => draw(p);
+      let img: p5.Image;
+      
+      p.preload = () => {img = p.loadImage('/butterfly.jpeg')};
+      p.setup = () => setup(p, img);
+      p.draw = () => draw(p, img);
     };
 
     const p5Instance: p5 = new p5(
@@ -25,10 +30,9 @@ const EuclidPattern = () => {
 
   return (
     <div>
-      <h1> ユークリッドパターン</h1>
       <div id='p5-container'></div>
     </div>
   );
 };
 
-export default EuclidPattern;
+export default PixelPainter;
