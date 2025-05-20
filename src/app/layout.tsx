@@ -17,7 +17,7 @@ export default function RootLayout({
           <Link href={'/PixelPainter'}>ピクセルぺいんと</Link>
           <Link href={'/Graffiti'}>Graffiti</Link>
           <Link href={'/RecursionPolygon'}>RecursionPolygon</Link>
-          <Link href={'/Test'}>テスト</Link>
+          <Link href={'/SierpinskiGasket'} >シェルピンスキーのフラクタル</Link>
         </nav>
         {children}
       </body>

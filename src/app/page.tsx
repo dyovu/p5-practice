@@ -21,7 +21,7 @@ export default function Page() {
       <Link href={'/RecursionPolygon'}>RecursionPolygon</Link>
       </div>
       <div>
-      <Link href={'/Test'}>RecursionPolygon</Link>
+      <Link href={'/SierpinskiGasket'}>シェルピンスキーのフラクタル</Link>
       </div>
     </>
   );
