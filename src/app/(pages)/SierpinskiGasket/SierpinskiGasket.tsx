@@ -16,9 +16,9 @@ const SierpinskiGasket = () => {
   // const [state, setState] = useState<number[]>([1]);
   const state2 = useRef<number[]>([1]);
   const gen = useRef<number>(0);
-  const num = 300;
-  const mod = 3;
-  const WIDTH = 600;
+  const num = 150;
+  const mod = 9;
+  const WIDTH = 500;
 
 
   useEffect(() => {

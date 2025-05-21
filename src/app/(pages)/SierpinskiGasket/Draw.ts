@@ -36,15 +36,12 @@ const drawCell = (p: p5, gen: number, width:number, num:number, state: number[],
   let y = gen*scalar;
   p.noStroke();
   for (let i=0; i < state.length; i++) {
-    let colorValue = (state[i] % mod) || mod; // 0になる場合はmodの値を使用
-    p.fill(120*colorValue, 100*colorValue, 100);
     // RGBモード
-    p.fill(100*(state[i]%mod), 200*(state[i]%mod), 200*(state[i]%mod));
-    // p.fill(255, 0, 0);
+    // p.fill(100*(state[i]), 200*(state[i]), 200*(state[i]), 100*(Math.log(state[i]+1)/Math.log(mod)));
 
     // HSBモード
     // HSBモードの改良版
-    p.fill(((120*(state[i]%mod)) + 30)%360, 80 + 20*(state[i]%mod)/mod, 80 + 20*(state[i]%3)/3);
+    p.fill(((210+ (state[i])**2))%360, 100, 70, 100*(Math.log(state[i]+1)/Math.log(mod)));
 
     p.rect(x, y, scalar, scalar);
     x += scalar;
