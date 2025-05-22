@@ -17,7 +17,7 @@ const SierpinskiGasket = () => {
   const state2 = useRef<number[]>([1]);
   const gen = useRef<number>(0);
   const num = 150;
-  const mod = 9;
+  const mod = 10;
   const WIDTH = 500;
 
 

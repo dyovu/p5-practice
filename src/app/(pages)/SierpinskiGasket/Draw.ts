@@ -34,14 +34,29 @@ const drawCell = (p: p5, gen: number, width:number, num:number, state: number[],
   let scalar = width/num;
   let x = (width - state.length*scalar)*0.5;
   let y = gen*scalar;
+
+
   p.noStroke();
+  const baseHue = 10; 
+  const hueRange = 80; // modに応じて最大80まで広がる
   for (let i=0; i < state.length; i++) {
     // RGBモード
     // p.fill(100*(state[i]), 200*(state[i]), 200*(state[i]), 100*(Math.log(state[i]+1)/Math.log(mod)));
 
     // HSBモード
     // HSBモードの改良版
-    p.fill(((210+ (state[i])**2))%360, 100, 70, 100*(Math.log(state[i]+1)/Math.log(mod)));
+    // p.fill(((210+ (state[i])**2))%360, 100, 70, 100*(Math.log(state[i]+1)/Math.log(mod)));
+    const value = state[i];
+
+    if (value === 0) {
+      // 透明に近い白っぽいセル（alphaを落とす）
+      p.fill(0, 0, 100, 20);
+    } else {
+      const hue = (baseHue + hueRange*Math.sin(Math.PI*(2*value-1)/2)/value ) % 360;
+      const alpha = 60 + 40 * (Math.log(value + 1) / Math.log(mod)); 
+
+      p.fill(hue, 80, 70, alpha); // 彩度・明度は固定
+    }
 
     p.rect(x, y, scalar, scalar);
     x += scalar;
