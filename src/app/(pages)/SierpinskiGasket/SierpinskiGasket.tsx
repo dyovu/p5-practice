@@ -62,14 +62,32 @@ const SierpinskiGasket = () => {
     P5_INSTANCE.current?.loop();
   };
 
+  const resetDrawing = () => {
+    state2.current = [1];
+    gen.current = 0;
+    SHOULD_STOP.current = false;
+    
+    if (P5_INSTANCE.current) {
+        // キャンバスをクリア（背景色で塗りつぶし）
+        P5_INSTANCE.current.background(255); // 白で塗りつぶし、または適切な背景色
+        // または P5_INSTANCE.current.clear(); でも可
+        
+        // 描画を再開
+        P5_INSTANCE.current.loop();
+    }
+  };
+
 
   return (
     <div>
       <button onClick={stopDrawing} style={{ marginTop: '10px', padding: '10px' }}>
-        停止
+        Stop
       </button>
       <button onClick={reStartDrawing} style={{ marginTop: '10px', padding: '10px' }}>
-        再開
+        Restart
+      </button>
+      <button onClick={resetDrawing} style={{ marginTop: '10px', padding: '10px' }}>
+        Reset
       </button>
       <div id='p5-container'></div>
     </div>

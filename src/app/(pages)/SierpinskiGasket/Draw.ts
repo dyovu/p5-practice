@@ -29,23 +29,15 @@ export default draw;
 
 
 const drawCell = (p: p5, gen: number, width:number, num:number, state: number[], mod:number) => {
-  // console.log('drawCell, generation: ', gen)
-  // console.log('mod: ', mod, 'num: ', num, 'width: ', width)
   let scalar = width/num;
   let x = (width - state.length*scalar)*0.5;
   let y = gen*scalar;
 
 
   p.noStroke();
-  const baseHue = 10; 
+  const baseHue = 280; 
   const hueRange = 80; // modに応じて最大80まで広がる
   for (let i=0; i < state.length; i++) {
-    // RGBモード
-    // p.fill(100*(state[i]), 200*(state[i]), 200*(state[i]), 100*(Math.log(state[i]+1)/Math.log(mod)));
-
-    // HSBモード
-    // HSBモードの改良版
-    // p.fill(((210+ (state[i])**2))%360, 100, 70, 100*(Math.log(state[i]+1)/Math.log(mod)));
     const value = state[i];
 
     if (value === 0) {
