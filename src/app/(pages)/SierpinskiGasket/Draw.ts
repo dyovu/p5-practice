@@ -1,37 +1,15 @@
 
 import { Dispatch, SetStateAction, MutableRefObject } from 'react';
-
 import p5 from 'p5';
 
-type stopDrawingFn = () => void;
-type updateStateFn = (list : number[]) => void;
-
-const draw = (
-  p:p5, 
-  stopDrawing: stopDrawingFn,
-  updateState: updateStateFn,
-  state: number[],
-  gen: MutableRefObject<number>,
-  num: number,
-  width: number,
-  mod: number
-) => {
-  if (gen.current < num) {
-    drawCell(p, gen.current, width, num, state, mod);
-    update(updateState, state, mod);
-  }else{
-    stopDrawing();
-  }
-  gen.current++;
-};
-
-export default draw;
+import { stopDrawing } from '@/utils/drawingControls';
+import { updateState } from './controls';
 
 
-const drawCell = (p: p5, gen: number, width:number, num:number, state: number[], mod:number) => {
-  let scalar = width/num;
+const drawCell = (p: p5, generation: number, width:number, maxGenerations:number, state: number[], mod:number) => {
+  let scalar = width/maxGenerations;
   let x = (width - state.length*scalar)*0.5;
-  let y = gen*scalar;
+  let y = generation*scalar;
 
 
   p.noStroke();
@@ -55,19 +33,38 @@ const drawCell = (p: p5, gen: number, width:number, num:number, state: number[],
   }
 };
 
-
 // パスカルの三角形の計算をする
 // 前の行を受け取り次の行を返す
-const update = (updateState: updateStateFn, state: number[], mod: number) => {
+const updateCells = (state: MutableRefObject<number[]>, mod: number) => {
   let newState: number[] = [];
   newState.push(1);
-  for (let i = 0; i < state.length-1; i++) {
+  for (let i = 0; i < state.current.length-1; i++) {
     // 足し算の段階で剰余計算を行う
-    newState.push((state[i] + state[i+1]) % mod);
+    newState.push((state.current[i] + state.current[i+1]) % mod);
   }
   newState.push(1);
-  updateState(newState);
+  updateState(newState, state);
 }
+
+const draw = (
+  p:p5, 
+  state: MutableRefObject<number[]>,
+  generation: MutableRefObject<number>,
+  maxGenerations: number,
+  width: number,
+  mod: number,
+  isStopedRef: MutableRefObject<boolean>
+) => {
+  if (generation.current < maxGenerations) {
+    drawCell(p, generation.current, width, maxGenerations, state.current, mod);
+    updateCells(state, mod);
+  }else{
+    stopDrawing(isStopedRef);
+  }
+  generation.current++;
+};
+
+export default draw;
 
 
 

@@ -18,6 +18,7 @@ export default function RootLayout({
           <Link href={'/Graffiti'}>Graffiti</Link>
           <Link href={'/RecursionPolygon'}>RecursionPolygon</Link>
           <Link href={'/SierpinskiGasket'} >シェルピンスキーのフラクタル</Link>
+          <Link href={'/SumRule2DCA'}>SumRule2DCA</Link>
         </nav>
         {children}
       </body>
