@@ -1,19 +1,24 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import p5 from 'p5';
-
 
 import '@/styles/global.css';
 
-import { stopDrawing, reStartDrawing } from '@/utils/drawingControls';
-import {resetDrawing, updateCells} from './controls';
 import setup from './Setup';
 import draw from './Draw';
+import CustomSlider from 'src/components/CustomSlider';
+
+import { toggleDrawing } from '@/utils/drawingControls';
+import {resetDrawing} from './controls';
 
 const SumRule2DCA = () => {
-  const isStoped = useRef(false); 
   const p5Instance = useRef<p5 | null>(null);
+  const isStoped = useRef(false); 
+  const [isStopedDisplay, setIsStopedDisplay] = useState(false);
+
+  const frameRate = useRef(5);
+  const [frameRateDisplay, setFrameRateDisplay] = useState(frameRate.current);
 
   const cells = useRef<number[][]>([]); // 2Dセルの状態を保持するための配列
   const generation = useRef<number>(0); 
@@ -23,16 +28,10 @@ const SumRule2DCA = () => {
   const firstCordinate = (600 / (cellPerSide.current+1));
 
   useEffect(() => {
-    
     const sketch = (p: p5) => {
       p.setup = () => setup(p, cells, cellPerSide.current);
       p.draw = () => {
-        draw(p, isStoped, cells, cellPerSide.current, generation, mod.current, cellSize, firstCordinate);
-        if (isStoped.current){
-          p.noLoop();
-        }else{
-          p.loop();
-        }
+        draw(p, cells, cellPerSide.current, generation, mod.current, cellSize, firstCordinate, frameRate.current, isStoped.current);
       };
     };
 
@@ -46,18 +45,28 @@ const SumRule2DCA = () => {
     };
   }, []);
 
+  const handleFrameRate = (value: number) => {
+    frameRate.current = value;
+    setFrameRateDisplay(value);
+    p5Instance.current?.frameRate(value);
+  };
+
 
   return (
     <div>
-      <button onClick={() => stopDrawing(isStoped)} style={{ marginTop: '10px', padding: '10px' }}>
-        Stop
-      </button>
-      <button onClick={() => reStartDrawing(isStoped, p5Instance)} style={{ marginTop: '10px', padding: '10px' }}>
-        Restart
+      <button onClick={() => toggleDrawing(isStoped, p5Instance, setIsStopedDisplay)} style={{ marginTop: '10px', padding: '10px' }}>
+        {isStoped.current ? 'Start' : 'Stop'}
       </button>
       <button onClick={() => resetDrawing(isStoped, p5Instance)} style={{ marginTop: '10px', padding: '10px' }}>
         Reset
       </button>
+      <CustomSlider
+        value={frameRate.current}
+        onChange={handleFrameRate}
+        label='frame rate'
+        min={1}
+        max={50}
+      />
       <div id='p5-container'></div>
     </div>
   );

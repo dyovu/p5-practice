@@ -59,16 +59,23 @@ const update = (cells: MutableRefObject<number[][]>, mod: number, cellPerSide: n
 
 const draw = (
   p:p5,
-  isStoped: MutableRefObject<boolean>,
   cells: MutableRefObject<number[][]>,
   cellPerSide: number,
   generation: MutableRefObject<number>,
   mod: number,
   cellSize: number,
-  firstCordinate: number
+  firstCordinate: number,
+  frameRate: number,
+  isStoped: boolean,
 ) => {
   console.log("cellSize", cellSize);
   console.log("firstCordinate", firstCordinate);
+
+  if (isStoped) {
+    return; // 停止状態なら何もしない
+  }
+
+  p.frameRate(frameRate);
 
   drawCell(p, cells, mod, cellSize, firstCordinate);
   update(cells, mod, cellPerSide);
