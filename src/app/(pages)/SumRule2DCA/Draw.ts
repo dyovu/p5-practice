@@ -21,7 +21,7 @@ const drawCell = (
       if (value === 0) {
         p.fill(0, 0, 100, 20); // 透明に近い白っぽいセル
       } else {
-        const hue = (150 + 150 * Math.sin(Math.PI * (2 * value - 1) / 2) / value) % 360;
+        const hue = (250 + 150 * Math.sin(Math.PI * (2 * value - 1) / 2) / value) % 360;
         const alpha = 80 + 20 * (Math.log(value + 1) / Math.log(mod)); // ログスケールで透明度を調整
         p.fill(hue, 80, 70, alpha); // 彩度・明度は固定
       }

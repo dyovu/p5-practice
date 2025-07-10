@@ -13,7 +13,7 @@ const drawCell = (p: p5, generation: number, width:number, maxGenerations:number
 
 
   p.noStroke();
-  const baseHue = 280; 
+  const baseHue = 0; 
   const hueRange = 80; // modに応じて最大80まで広がる
   for (let i=0; i < state.length; i++) {
     const value = state[i];
@@ -22,11 +22,13 @@ const drawCell = (p: p5, generation: number, width:number, maxGenerations:number
       // 透明に近い白っぽいセル（alphaを落とす）
       p.fill(0, 0, 100, 20);
     } else {
-      const hue = (baseHue + hueRange*Math.sin(Math.PI*(2*value-1)/2)/value ) % 360;
+      const hue = (baseHue + hueRange*Math.sin(Math.PI*(2*value)/2)/value ) % 360;
       const alpha = 60 + 40 * (Math.log(value + 1) / Math.log(mod)); 
 
       p.fill(hue, 80, 70, alpha); // 彩度・明度は固定
     }
+
+    // p.fill((state[i]*1.0/mod)*360, (state[i]*1.0/mod)*360, 360); // 彩度・明度は固定
 
     p.rect(x, y, scalar, scalar);
     x += scalar;

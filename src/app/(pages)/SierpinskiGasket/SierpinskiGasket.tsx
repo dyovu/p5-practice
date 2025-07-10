@@ -16,7 +16,7 @@ const SierpinskiGasket = () => {
   const state = useRef<number[]>([1]);
   const generation = useRef<number>(0);
   const maxGenerations = 150;
-  const mod = 10;
+  const mod = 2;
   const WIDTH = 500;
 
 
